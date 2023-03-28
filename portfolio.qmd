@@ -2,6 +2,18 @@
 title: "Portfolio"
 ---
 
-Hi there this is my portfolio page! Yay...
-  
-Here's another line for good measure.
+Hi there this is my portfolio page!
+
+***Work at the GWHatchet, George Washington University's student-run and independent newspaper***
+
+[Here](https://www.gwhatchet.com/author/nuria-diaz/) are my bylines with the GWHatchet for the past three years, where I have worked as a staff writer, contributing sports editor, sports editor and editorial board member.
+
+***Ectopic Pregnancy Story***
+
+This [story](https://www.politifact.com/article/2022/jun/30/how-treatment-ectopic-pregnancy-fits-post-roe-medi/) examines the aftermath of the repealing of Roe v. Wade and how it impacts ectopic pregnancies.
+
+[![](56c7fe7abc6bf561c65760eebf4e20eb.jpg)](https://www.politifact.com/article/2022/jun/30/how-treatment-ectopic-pregnancy-fits-post-roe-medi/)
+
+***Puerto Rico's electric grid***
+
+This [story](https://www.politifact.com/article/2022/jul/14/ask-politifact-whats-puerto-ricos-electricity-bill/) breaks down the current issues the citizen's of Puerto Rico face with the island's electric grid.
