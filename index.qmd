@@ -1,31 +1,34 @@
 ---
-title: "Aaron M. Kessler"
+title: "Nuria Diaz Munoz"
 about:
   template: jolla
-  image: testimage.jpg
+  image: IMG_0157.jpeg
   links:
     - icon: twitter
       text: twitter
-      href: https://twitter.com/akesslerdc
+      href: https://twitter.com/nuriadiazmunoz
     - icon: github
       text: Github
-      href: https://github.com/amkessler
+      href: https://github.com/Nuriadiaz01
 ---
 
-Hi, I'm Aaron and I'm a reporter at the AP in Washington. I like data, the ocean and F1 racing. I've got two little ones and enjoy watching them grow up.
+Hi, I'm Nuria Diaz, a junior at the George Washington University studying journalism and mass communcaition. I'm interested in foreign correspondence and investigative journalism, in the past three years I have worked at NBC4, C-SPAN and PolitiFact. My hobbies are reading, writing and watching sports during my free time. 
 
 ## Education
 
-University of Missouri tktktktk
+George Washington University 
 
-Columbia University
-
-Washington University in St. Louis
 
 ## Skills
 
 Reporting and Writing
 
-Data Analysis
+Fact-checking 
 
-FOIA laws
+Video Editing 
+
+Photography 
+
+Worpress 
+
+CMS 
