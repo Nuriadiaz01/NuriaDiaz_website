@@ -8,11 +8,12 @@ website:
     right: 
       - icon: github
         href: https://github.com/
-  title: "Nuria's Website"
+  title: "Nuria Diaz's Website"
   navbar:
     left:
       - href: index.qmd
         text: Home
+      
       - about.qmd
       - portfolio.qmd
       - walkthrough.qmd
