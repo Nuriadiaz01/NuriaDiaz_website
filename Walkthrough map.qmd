@@ -1,0 +1,30 @@
+---
+title: "Interactive Map"
+author: "Nuria Diaz"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+
+html: 
+self-contained: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tigris)
+library(tidycensus)
+library(janitor)
+library(writexl)
+library(jsonlite)
+options(tigris_class = "sf")
+
+```{r}
+census_api_key("APIKEYCODE", install=TRUE)
+
+
+
+
+
+
+
+
+

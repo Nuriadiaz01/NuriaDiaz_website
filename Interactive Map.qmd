@@ -1,0 +1,215 @@
+---
+title: "Interactive Map"
+author: "Nuria Diaz"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format:
+  html:
+    self-contained: true
+    toc: true
+    toc-location: left
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tigris)
+library(sf)
+library(tidycensus)
+library(htmltools)
+library(janitor)
+library(here)
+library(mapview)
+library(leafsync)
+library(leaflet.extras2)
+options(tigris_class = "sf")
+
+#first I add the files into my program downloading both maoviw and leaflet.extras2 to run my code 
+
+```
+
+
+
+```{r}
+
+#census_api_key("APIKEYCODE", install=TRUE)
+
+#I install my API key to download information needed for my prject 
+```
+
+```{r}
+#I added the variables I was interested, followed the in class model 
+myvars <- c(totalpop = "B01003_001",
+            medincome = "B19013_001",
+            medage = "B01002_001"
+)
+```
+
+
+```{r}
+#took the variables from the data in MA 
+MA_counties_withgeo <- get_acs(geography = "county",
+                       variables = c(myvars),
+                       state = "MA",
+                       output = "wide",
+                       geometry = TRUE)
+
+MA_counties_withgeo
+
+e0a09c8af7722cd58b5caf56ecacdc02dc824aaa
+```
+
+```{r}
+#here is the code but with all the counties in the state 
+all_counties_withgeo <- get_acs(geography = "county",
+                       variables = c(myvars),
+                       output = "wide",
+                       geometry = TRUE)
+
+all_counties_withgeo
+```
+
+```{r}
+#removed the  MOE columns which end with "N"
+ma_counties_withgeo <- MA_counties_withgeo %>%
+  select(-ends_with("N"))
+
+ma_counties_withgeo
+```
+
+```{r}
+#removed that trailing "E"
+colnames(ma_counties_withgeo) <- sub("E$", "E", colnames(ma_counties_withgeo)) 
+
+MA_counties_withgeo
+```
+
+
+```{r}
+
+mapview(MA_counties_withgeo, zcol = "medincomeE")
+
+# looked to crate the first step of my map with the variable of mediaincome 
+
+```
+
+```{r}
+
+mapview(MA_counties_withgeo, zcol = "medincomeE", 
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1)
+
+#here is the map looking for the specific category of income in MA counties and customized the colors the map would use. 
+
+```
+
+```{r}
+
+mapviewOptions("basemaps.color.shuffle" = FALSE)
+
+#shuffled the colors of the map to make them clearer
+```
+
+
+```{r}
+
+mapview(MA_counties_withgeo, zcol = "medincomeE", 
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1)
+
+
+
+```
+
+
+```{r}
+
+map_income <- mapview(MA_counties_withgeo, zcol = "medincomeE", 
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1)
+
+map_age <- mapview(MA_counties_withgeo, zcol = "medageE", 
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1)
+
+#combined two maps together 
+```
+
+
+```{r}
+
+sync(map_income, map_age)
+
+#synced the maps together 
+```
+
+
+```{r}
+
+map_income | map_age
+
+#made the maps be side by side for an easy comparison 
+```
+
+
+```{r}
+
+mapview(MA_counties_withgeo, zcol = "medincomeE", 
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1,
+         legend = FALSE, 
+         label = FALSE, 
+         popup = FALSE)
+#turned off the legends and popups 
+
+```
+
+
+```{r}
+
+mylabel <- glue::glue("{va_counties_withgeo$NAM} {va_counties_withgeo$medincome}")
+
+
+mapview(MA_counties_withgeo, zcol = "medincomeE", 
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1,
+         label = mylabel)
+
+# I customised the labels by making the code more specific, I don't think it worked 
+```
+
+
+```{r}
+mypopup <- glue::glue("<strong>{MA_counties_withgeo$NAM}</strong><br />
+                      Total Population: {MA_counties_withgeo$totalpop}<br />
+                      Median Income: {MA_counties_withgeo$medincome}") %>% 
+  lapply(htmltools::HTML)
+
+
+#customized the popups 
+```
+
+
+```{r}
+
+head(mypopup)
+
+
+```
+
+
+```{r}
+
+mapview(MA_counties_withgeo, zcol = "medincomeE", 
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1,
+         popup = mypopup)
+
+#final version of my map with the popups 
+
+```
+
+
+
+
+```
