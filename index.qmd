@@ -10,6 +10,7 @@ about:
     - icon: github
       text: Github
       href: [https://github.com/Nuriadiaz01](https://nuriadiaz01.github.io/)
+
 ---
 
 Hi, I'm Nuria Diaz, a junior at the George Washington University studying journalism and mass communcaition. I'm interested in foreign correspondence and investigative journalism, in the past three years I have worked at NBC4, C-SPAN and PolitiFact. My hobbies are reading, writing and watching sports during my free time. 
