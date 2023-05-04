@@ -13,12 +13,12 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: about.qmd
-        text: about 
+      - href: election project .qmd
+        text: election project
       - href: portfolio.qmd
         text: Portfolio
-      - walkthrough.qmd
-      - NuriaDiaz_resume.docx
+      
+    
       
 
 
