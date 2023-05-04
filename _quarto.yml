@@ -17,8 +17,11 @@ website:
         text: Nuria Diaz resume
       - href: portfolio.qmd
         text: Portfolio
+      - href: mapping walkthrough.qmd
+        text: mapping walkthrough 
       
-      
+    
+     
     
       
 
