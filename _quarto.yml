@@ -13,8 +13,8 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: interactive map.r
-        text: interactive map walkthrough
+      - href: NuriaDiaz_resume.docx
+        text: Nuria Diaz resume
       - href: portfolio.qmd
         text: Portfolio
       

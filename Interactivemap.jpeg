@@ -1,15 +1,15 @@
 ---
-  title: "Interactive Map"
+title: "Interactive Map"
 author: "Nuria Diaz"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 format:
   html:
-  self-contained: true
-toc: true
-toc-location: left
+    self-contained: true
+    toc: true
+    toc-location: left
 ---
-  
-  ```{r setup, include=FALSE}
+
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
@@ -28,8 +28,6 @@ options(tigris_class = "sf")
 
 ```
 
-
-
 ```{r}
 
 # census_api_key("APIKEYCODE", install=TRUE)
@@ -45,18 +43,16 @@ myvars <- c(totalpop = "B01003_001",
 )
 ```
 
-
 ```{r}
 #took the variables from the data in MA
 ```
 
-
 ```{r}
 MA_counties_withgeo <- get_acs(geography = "county",
-                               variables = c(myvars),
-                               state = "MA",
-                               output = "wide",
-                               geometry = TRUE)
+                    variables = c(myvars),
+                    state = "MA",
+                     output = "wide",
+                      geometry = TRUE)
 
 MA_counties_withgeo
 
@@ -66,9 +62,9 @@ MA_counties_withgeo
 ```{r}
 #here is the code but with all the counties in the state 
 all_counties_withgeo <- get_acs(geography = "county",
-                                variables = c(myvars),
-                                output = "wide",
-                                geometry = TRUE)
+                  variables = c(myvars),
+                      output = "wide",
+                      geometry = TRUE)
 
 all_counties_withgeo
 ```
@@ -88,7 +84,6 @@ colnames(ma_counties_withgeo) <- sub("E$", "E", colnames(ma_counties_withgeo))
 MA_counties_withgeo
 ```
 
-
 ```{r}
 
 mapview(MA_counties_withgeo, zcol = "medincomeE")
@@ -100,8 +95,8 @@ mapview(MA_counties_withgeo, zcol = "medincomeE")
 ```{r}
 
 mapview(MA_counties_withgeo, zcol = "medincomeE", 
-        col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
-        alpha.regions = 1)
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1)
 
 #here is the map looking for the specific category of income in MA counties and customized the colors the map would use. 
 
@@ -114,31 +109,28 @@ mapviewOptions("basemaps.color.shuffle" = FALSE)
 #shuffled the colors of the map to make them clearer
 ```
 
-
 ```{r}
 
 mapview(MA_counties_withgeo, zcol = "medincomeE", 
-        col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
-        alpha.regions = 1)
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1)
 
 
 
 ```
-
 
 ```{r}
 
 map_income <- mapview(MA_counties_withgeo, zcol = "medincomeE", 
-                      col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
-                      alpha.regions = 1)
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1)
 
 map_age <- mapview(MA_counties_withgeo, zcol = "medageE", 
-                   col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
-                   alpha.regions = 1)
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1)
 
 #combined two maps together 
 ```
-
 
 ```{r}
 
@@ -147,7 +139,6 @@ sync(map_income, map_age)
 #synced the maps together 
 ```
 
-
 ```{r}
 
 map_income | map_age
@@ -155,19 +146,17 @@ map_income | map_age
 #made the maps be side by side for an easy comparison 
 ```
 
-
 ```{r}
 
 mapview(MA_counties_withgeo, zcol = "medincomeE", 
-        col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
-        alpha.regions = 1,
-        legend = FALSE, 
-        label = FALSE, 
-        popup = FALSE)
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1,
+         legend = FALSE, 
+         label = FALSE, 
+         popup = FALSE)
 #turned off the legends and popups 
 
 ```
-
 
 ```{r}
 
@@ -175,13 +164,12 @@ mylabel <- glue::glue("{va_counties_withgeo$NAM} {va_counties_withgeo$medincome}
 
 
 mapview(MA_counties_withgeo, zcol = "medincomeE", 
-        col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
-        alpha.regions = 1,
-        label = mylabel)
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1,
+         label = mylabel)
 
 # I customised the labels by making the code more specific, I don't think it worked 
 ```
-
 
 ```{r}
 mypopup <- glue::glue("<strong>{MA_counties_withgeo$NAM}</strong><br />
@@ -193,7 +181,6 @@ mypopup <- glue::glue("<strong>{MA_counties_withgeo$NAM}</strong><br />
 #customized the popups 
 ```
 
-
 ```{r}
 
 head(mypopup)
@@ -201,14 +188,15 @@ head(mypopup)
 
 ```
 
-
 ```{r}
 
 mapview(MA_counties_withgeo, zcol = "medincomeE", 
-        col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
-        alpha.regions = 1,
-        popup = mypopup)
+         col.regions = RColorBrewer::brewer.pal(9, "Greens"), 
+         alpha.regions = 1,
+         popup = mypopup)
 
 #final version of my map with the popups 
 
 ```
+
+\`\`\`
