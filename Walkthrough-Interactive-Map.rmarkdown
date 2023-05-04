@@ -28,11 +28,9 @@ options(tigris_class = "sf")
 
 ```
 
-
-
 ```{r}
 
-census_api_key("APIKEY", install=TRUE)
+# census_api_key("APIKEYCODE", install=TRUE)
 
 #I install my API key to download information needed for my project 
 ```
@@ -45,26 +43,28 @@ myvars <- c(totalpop = "B01003_001",
 )
 ```
 
+```{r}
+#took the variables from the data in MA
+```
 
 ```{r}
-#took the variables from the data in MA 
 MA_counties_withgeo <- get_acs(geography = "county",
-                       variables = c(myvars),
-                       state = "MA",
-                       output = "wide",
-                       geometry = TRUE)
+                    variables = c(myvars),
+                    state = "MA",
+                     output = "wide",
+                      geometry = TRUE)
 
 MA_counties_withgeo
 
-c991c405b44b49bc5af34539c93ab5632a76b05c
+
 ```
 
 ```{r}
 #here is the code but with all the counties in the state 
 all_counties_withgeo <- get_acs(geography = "county",
-                       variables = c(myvars),
-                       output = "wide",
-                       geometry = TRUE)
+                  variables = c(myvars),
+                      output = "wide",
+                      geometry = TRUE)
 
 all_counties_withgeo
 ```
@@ -83,7 +83,6 @@ colnames(ma_counties_withgeo) <- sub("E$", "E", colnames(ma_counties_withgeo))
 
 MA_counties_withgeo
 ```
-
 
 ```{r}
 
@@ -110,7 +109,6 @@ mapviewOptions("basemaps.color.shuffle" = FALSE)
 #shuffled the colors of the map to make them clearer
 ```
 
-
 ```{r}
 
 mapview(MA_counties_withgeo, zcol = "medincomeE", 
@@ -120,7 +118,6 @@ mapview(MA_counties_withgeo, zcol = "medincomeE",
 
 
 ```
-
 
 ```{r}
 
@@ -135,7 +132,6 @@ map_age <- mapview(MA_counties_withgeo, zcol = "medageE",
 #combined two maps together 
 ```
 
-
 ```{r}
 
 sync(map_income, map_age)
@@ -143,14 +139,12 @@ sync(map_income, map_age)
 #synced the maps together 
 ```
 
-
 ```{r}
 
 map_income | map_age
 
 #made the maps be side by side for an easy comparison 
 ```
-
 
 ```{r}
 
@@ -163,7 +157,6 @@ mapview(MA_counties_withgeo, zcol = "medincomeE",
 #turned off the legends and popups 
 
 ```
-
 
 ```{r}
 
@@ -178,7 +171,6 @@ mapview(MA_counties_withgeo, zcol = "medincomeE",
 # I customised the labels by making the code more specific, I don't think it worked 
 ```
 
-
 ```{r}
 mypopup <- glue::glue("<strong>{MA_counties_withgeo$NAM}</strong><br />
                       Total Population: {MA_counties_withgeo$totalpop}<br />
@@ -189,14 +181,12 @@ mypopup <- glue::glue("<strong>{MA_counties_withgeo$NAM}</strong><br />
 #customized the popups 
 ```
 
-
 ```{r}
 
 head(mypopup)
 
 
 ```
-
 
 ```{r}
 
@@ -212,4 +202,6 @@ mapview(MA_counties_withgeo, zcol = "medincomeE",
 
 
 
+
 ```
+
