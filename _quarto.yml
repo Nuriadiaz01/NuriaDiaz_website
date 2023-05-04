@@ -13,9 +13,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      
-      - about.qmd
-      - portfolio.qmd
+      - href: about.qmd
+        text: about 
+      - href: portfolio.qmd
+        text: Portfolio
       - walkthrough.qmd
       - NuriaDiaz_resume.docx
       
