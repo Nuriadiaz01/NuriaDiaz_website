@@ -1,3 +1,6 @@
+---
+title: "School Paper"
+---
 For my Intro to Creative Writing class I wrote two poems to represent how I felt moving abroad to the U.S. and being away from my family.
 
 My mother's song (Villanelle)
@@ -103,3 +106,7 @@ Laughter following along in waves,
 I want to be filled with dreams and wishes,
 
 Just as the sea is with the people.
+
+
+
+```
