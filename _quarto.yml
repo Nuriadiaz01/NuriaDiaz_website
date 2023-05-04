@@ -13,8 +13,8 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: election project .qmd
-        text: election project
+      - href: interactive map.r
+        text: interactive map walkthrough
       - href: portfolio.qmd
         text: Portfolio
       
