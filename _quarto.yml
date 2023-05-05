@@ -19,6 +19,10 @@ website:
         text: Portfolio
       - href: mapping walkthrough.qmd
         text: mapping walkthrough 
+      - href: beginner walkthrough.qmd
+        text: Beginner's walkthrough 
+      - href: Journalism Article.qmd
+        text: Journalism sample article
       
     
      

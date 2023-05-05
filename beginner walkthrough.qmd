@@ -1,0 +1,146 @@
+---
+title: "Customized walkthrough"
+editor: visual
+---
+
+Begin the project by downloading the necessary files to analyze the data. 
+```{r setup, include=FALSE}
+#knitr::opts_chunk$set(echo = TRUE)
+
+# Load the packages we'll need
+#library(tidyverse)
+#library(lubridate)
+#library(readxl)
+#library(writexl)
+#library(janitor)
+
+```
+
+We will be looking at the Impeachment votes by the House, to load the datae we will create a data frame that contrains the row of every House Democrat and how they voted in the first Trump impeachment. 
+
+The data also has election results and demographics in each of the member's district which we can use further on. 
+
+
+```{r}
+
+#impeach <- readRDS("impeach.rds")
+
+
+```
+
+
+
+Begin. by writing a code to group the information together, we will first look at how many members in the data set favored impeachment vs. how many voted against. 
+
+```{r}
+
+#impeach %>% 
+  #group_by( for_impeachment) %>%  summarise(n = n()) %>% 
+  #arrange(desc(n))
+
+
+```
+
+Next, we will use the grouping function to break down the Democratic House Members by those who voted for and against impeachment and the districts, this function will group both columns together. 
+
+
+```{r}
+
+#impeach %>% 
+  #group_by( for_impeachment, district) %>%  summarise(n = n()) %>% 
+  #arrange(desc(n))
+
+
+
+
+```
+
+Now we will instead group by wether the districts are above or below the national college graduate percentage.  
+
+```{r}
+
+
+
+#impeach %>% 
+  #group_by( for_impeachment, median_income_compared_to_national) %>%  summarise(n = n()) %>% 
+  #arrange(desc(n))
+
+```
+
+In the following formula we will look into the mean percentage of the college grads by having R tell us with either Yes or NO if the district's representative voted for impeachment. This will elp us calculate this mean.   Let's look at the college graduation comparison in a slightly different way.  
+
+
+```{r}
+#impeach %>% 
+ # group_by(for_impeachment, pct_bachelors_compared_to_national) %>%  summarise(n = n()) %>% 
+  #arrange(desc(n))
+
+
+```
+
+```
+
+Now we will have our formula show us the mean percentage of votes that Donald Trump recived in the "yes" districts vs. those in the No districts.  
+
+```{r}#
+
+#impeach %>% 
+ # group_by(for_impeachment, trump_percent) %>%  summarise(n = n()) %>% 
+  #arrange(desc(n))
+
+
+
+
+```
+
+Filet the members who voted yes for impeachment with this formula, to see how mnay won their 2018 election by less than 5 percent of points. 
+
+```{r}
+
+  
+#impeach %>% 
+  #filter(for_impeachment == "YES") %>% group_by (for_impeachment,margin_flag_2018) %>% summarise(n = n()) %>% 
+  #arrange(desc(n))
+
+
+```
+
+Now create a new breakdown to see how rurality impacted the impeachment votes compared to more urban areas.  
+```{r}
+
+
+#impeach %>% 
+ # filter(for_impeachment == "YES") %>% group_by (for_impeachment,gdp_above_national) %>% summarise(n = n()) %>% 
+ # arrange(desc(n))
+
+
+
+
+
+```
+
+With the column "date_announced" look into how members came out in support of impeachment and the date they announced their support. Using the mutate function you can create two new columns that extract the year and moth. 
+
+```{r}
+
+#impeach <- impeach%>% 
+  #mutate(year = year(date_announced), month = month(date_announced)) 
+  
+ # events <- events %>% 
+ # mutate(year = year(date),
+        # month = month(date),
+         #day = day(date))
+
+```
+
+In continutation we use the grouping function to  count the amount of House Democrats that announced their support each month. 
+
+```{r}
+
+  
+
+
+#impeach %>% 
+  #filter(for_impeachment == "YES") %>% group_by (year, month) %>% summarise(n = n()) %>% 
+ # arrange(desc(n))
+---
