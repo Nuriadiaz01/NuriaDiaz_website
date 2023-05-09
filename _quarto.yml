@@ -25,6 +25,8 @@ website:
         text: Journalism sample article
       - href: Breaking News Story.qmd
         text: Breaking news story 
+      - href: School paper.qmd 
+        text: School Paper
         
       
     
