@@ -1,0 +1,182 @@
+---
+title: "Intro to Data Analysis in R - Sorting and Filtering"
+author: "Aaron Kessler"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format:
+  html:
+    self-contained: true
+    toc: true
+    toc-location: left
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Load the packages we'll need
+# Remember, think of this like packing for our trip
+# (We don't take the whole closet, only what we need)
+library(tidyverse)
+library(tidyquant)
+library(writexl)
+library(nycflights13)
+
+```
+
+
+```{r}
+
+flightdata <- nycflights13::flights
+
+flightdata
+
+```
+
+
+```{r}
+
+head(flightdata)
+
+```
+
+```{r}
+
+glimpse(flightdata)
+
+```
+
+
+```{r}
+ 
+filter(flightdata, dest == "SJU")
+
+```
+
+
+```{r}
+
+filter(flightdata, month <= 3)
+
+```
+
+
+```{r}
+
+filter(flightdata, dest == "SJU", month <= 3)
+
+
+```
+
+```{r}
+
+flightdata %>% 
+  filter(dest == "SJU")
+
+```
+
+
+```{r}
+
+flightdata %>% 
+  arrange(dep_delay)
+
+```
+
+
+```{r}
+
+flightdata %>% 
+  arrange(desc(dep_delay))
+
+```
+
+
+```{r}
+
+flightdata %>% 
+  filter(dest == "SJU", month <= 3) %>% 
+  arrange(desc(dep_delay))
+
+```
+
+
+```{r}
+
+arrange(filter(flightdata, dest == "SJU", month <= 3), desc(dep_delay))
+
+```
+
+```{r}
+
+flightdata  %>% 
+  select(carrier, flight, origin, dest, month, day, sched_dep_time, dep_delay)
+
+```
+
+
+
+```{r}
+# You can pull out just certain variables as well  
+# This results in the same thing as above
+
+flightdata %>% 
+  select(-year)
+
+```
+
+
+```{r}
+
+flightdata %>% 
+  filter(dest == "SJU", month <= 3) %>% 
+  select(carrier, flight, origin, dest, 
+         month, day, sched_dep_time, dep_delay)
+
+```
+
+
+
+```{r}
+
+sarasota_q1 <- flightdata %>% 
+  filter(dest == "SJU", month <= 3) %>% 
+  select(carrier, flight, origin, dest, 
+         month, day, sched_dep_time, dep_delay)
+
+
+```
+
+
+```{r}
+
+sarasota_q1
+
+
+
+
+```
+
+
+BREAKING NEWS STORY: 
+
+n 2013, flights departing from the John F. Kennedy Airport departing to Luis Muñoz Marin airport in San Juan, Puerto Rico held an average delay 'r_flights_JFK_to_SJU' minutes. In the month of March, air travel to the island faced significant delays, experiencing longer delays than averagely seen traveling to Puerto Rico. According to the data administered by American Association of Airports, 'r fligths_leavingtoSJU' flights were destined to land in Luis Muñoz Marin Airport, with an average delay of 'r_flights_JFK_to_SJU' minutes. Marking an xx increase than the average flight to Puerto Rico from the JFK airport. The difference between the two figures suggest that JFK faced challenges during their regular operations that led to a lesser service to operate flights efficiently. 
+
+Experts in airport operations said the delays could be due to a variety of factors like overwhelming weather conditions, lack of personnel or equipment shortages. According to an article by Travel and Leisure warmer temperatures lead to less efficient flights as cold air is “denser than warm air,” leading to shorter and faster takeoff times. According to the data the longest delay recorded around 122 while the shortest was around -4. Airport delays have become an increasing problem in airports around the country, with a report by the ValuePenguin showcasing that in the first five months of 2022 airlines resported a 20.1% increase of delays of at least 15 minutes. Experts said this data from 2013 could have been a warning of the current situation in national airports, as many airlines companies kept their operations the same instead of seeking new methods to decrease delays. 
+```{r}
+
+fligths_leavingtoSJU <- flights %>%  filter (dest == "SJU") %>% nrow()
+
+fligths_leavingtoSJU
+```
+
+
+```{r}
+flights_JFK_to_SJU <-flights %>% filter (origin == "JFK", dest == "SJU") %>%   select(carrier, flight, origin, dest, 
+         month, day, sched_dep_time, dep_delay) %>% nrow()
+         
+
+ flights_JFK_to_SJU
+
+```
+
+flights %>% filter (origin == "JFK", dest == "SJU") %>%   select(carrier, flight, origin, dest, 
+         month, day, sched_dep_time, dep_delay)
