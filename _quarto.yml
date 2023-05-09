@@ -23,6 +23,9 @@ website:
         text: Beginner's walkthrough 
       - href: Journalism Article.qmd
         text: Journalism sample article
+      - href: Breaking News Story.qmd
+        text: Breaking news story 
+        
       
     
      
